@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🧠 Project Euler Solutions
 
 Welcome to my collection of solutions to [Project Euler](https://projecteuler.net/) problems — a series of challenging mathematical and computational problems designed to be solved with programming and reasoning.
@@ -10,8 +9,8 @@ Welcome to my collection of solutions to [Project Euler](https://projecteuler.ne
 This repository contains my personal solutions written in **Python 3**.  
 Each problem file follows a consistent naming pattern for clarity and order:
 
-p001.py
-p002.py
+p001.py,
+p002.py,
 p003.py
 ...
 
@@ -54,7 +53,3 @@ To run a specific problem:
 
 ```bash
 python p010.py
-=======
-# project-euler
-My personal solutions to Project Euler problems, written in Python. Each solution focuses on clarity, performance, and mathematical insight.
->>>>>>> 827984111d7cb585646da7a2eb8a3b9e3db30e08
