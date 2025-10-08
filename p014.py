@@ -1,60 +1,60 @@
 def collatz_sequence_length(n, cache):
     """
-    Calcula o comprimento (número de termos) da sequência de Collatz para um número n.
+    Calculates the length (number of terms) of the Collatz sequence for a given number n.
 
-    A sequência de Collatz é definida assim:
-        - Se n for par, o próximo termo é n / 2
-        - Se n for ímpar, o próximo termo é 3n + 1
-        - A sequência termina quando n = 1
+    The Collatz sequence is defined as follows:
+        - If n is even, the next term is n / 2
+        - If n is odd, the next term is 3n + 1
+        - The sequence ends when n = 1
 
-    Este algoritmo utiliza memoização (armazenamento em cache) para evitar
-    recalcular sequências que já foram obtidas anteriormente.
+    This algorithm uses memoization (caching) to avoid recalculating sequences
+    that have already been computed.
 
-    Parâmetros:
+    Parameters:
     -----------
     n : int
-        Número inicial para o cálculo da sequência.
+        Starting number for which the Collatz sequence length will be calculated.
     cache : dict
-        Dicionário que armazena os comprimentos de sequências já calculadas.
-        A chave é o número e o valor é o comprimento da sequência.
+        Dictionary that stores lengths of previously computed sequences.
+        The key is the number, and the value is the length of its sequence.
 
-    Retorna:
+    Returns:
     --------
     int
-        Comprimento total da sequência de Collatz iniciando em n.
+        The total length of the Collatz sequence starting from n.
     """
-    # Verifica se o valor já foi calculado anteriormente
+    # Check if the value has already been computed and stored in cache
     if n in cache:
         return cache[n]
 
-    # Se n for par, aplica a regra n / 2
+    # If n is even, apply n / 2
     if n % 2 == 0:
         length = 1 + collatz_sequence_length(n // 2, cache)
-    # Se n for ímpar, aplica a regra 3n + 1
+    # If n is odd, apply 3n + 1
     else:
         length = 1 + collatz_sequence_length(3 * n + 1, cache)
 
-    # Armazena o resultado no cache para uso futuro
+    # Store the computed result in cache for future reuse
     cache[n] = length
     return length
 
 
-# Inicializa o cache com o caso base da sequência de Collatz (n = 1)
+# Initialize the cache with the base case of the Collatz sequence (n = 1)
 cache = {1: 1}
 
-# Variáveis para armazenar o maior comprimento encontrado e o número correspondente
+# Variables to keep track of the longest sequence and its corresponding number
 longest_chain = 0
 number_with_longest = 1
 
-# Loop principal: testa todos os números de 1 até 1 milhão
+# Main loop: test every number from 1 up to 1,000,000
 for n in range(1, 1_000_000):
-    # Calcula o comprimento da sequência para o número atual
+    # Compute the sequence length for the current number
     length = collatz_sequence_length(n, cache)
 
-    # Atualiza os valores máximos caso uma sequência mais longa seja encontrada
+    # Update the record if a longer sequence is found
     if length > longest_chain:
         longest_chain = length
         number_with_longest = n
 
-# Exibe o resultado final formatado
-print(f"O número com a sequência mais longa é {number_with_longest} com {longest_chain} elementos.")
+# Display the final result
+print(f"The number with the longest Collatz sequence is {number_with_longest} with {longest_chain} terms.")
